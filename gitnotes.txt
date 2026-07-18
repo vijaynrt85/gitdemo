@@ -87,3 +87,31 @@ git commit
 git pull (later chnages from remote to local )
 
 git push
+
+
+working directory 
+git clone
+git status
+git checkout -b branchname
+git status or git branch 
+git add filenames or add. 
+git status 
+git commit -m "description"
+git push (changes from local repo to remote repo branch ) if remote repo branch does not exist then we have to use --setup --up stream origin branchnameoflocalrepo so that i will create the remote repo branch and then push our local repo branch code to remote repo branch
+if we have to sync the latest changes to our branch then we have to use 
+git pull origin main (here main is the branch name if we have diff branch then use that branch name)
+
+
+
+we can see the files added locally in any branch but after adding and commit and push our files from local repo to remote repo and then merge it wont be available in other branches
+
+so all files are linked to that particualr  branches once those are pushed to remote repo until then it will be shown in all branches 
+
+
+
+main branch - latest code from remote to local repo 
+
+defect fix 1- branch 1 created on top of main branch - file 1,file 2, file 3 along with latest repo of main branch - add commit and then only check out 
+
+dev fix - branch 2- file 4 , file 5,file 6 (file 1,file 2, file 3)
+
