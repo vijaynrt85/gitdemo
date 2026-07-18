@@ -1,0 +1,89 @@
+1 person >>
+
+Team >>
+
+multiple persons working on same branch >>
+
+
+======================================================
+git -Version Control System
+git hub (open source),GitLab, azure DevOps , bit Bicket --cloud  platforms
+
+
+git --version (git download)
+
+account creation >> Repo Creation >> Public / Private >> copy git clone command (url) -- username , Email ID
+
+git config  / git config --global >> -- username , Email ID
+
+git clone url --- main /master
+
+added a new file demo1.txt, demo2.txt,demo3.txt,demo4.txt
+
+git status
+
+git add demo1.txt ,demo4.txt / git add . (new all files)
+
+git commit -m "adding demo file"
+
+git push
+============================================
+main
+git branch
+
+git checkout -b <branch-name>  -------new branch from local
+git checkout -b demo-branch
+main >>demo-branch
+
+git checkout main >> branch switching
+demo-branch >> main
+===================================
+1 person
+
+git clone
+
+git checkout -b <branch-name>  -------new branch from local
+
+git checkout main >> branch switching
+
+git status
+
+git add demo1.txt ,demo4.txt / git add . (new all files)
+
+git commit -m "adding demo file"
+
+git push
+====================================
+git checkout -b <branch-name>  -------new branch from local
+
+git checkout main >> branch switching
+
+Team 4 >> b1 ,b2, b3, b4  >> main
+
+git branch
+
+git checkout -b b4
+
+git push (b4) >> local to remote
+
+Pull Request  >> remote b4 to remote main >> PR create >>Merge (main)
+
+
+local >> b4 - checkout to main  >> git pull origin main
+====================================
+2 persons working on same branch
+
+b4 --- login  , add to cart
+
+git branch -b4
+
+code push Username=vijay1, pwd=123
+
+code devlop ---Username=vijay2, pwd=12345
+git  add .
+
+git commit
+
+git pull (later chnages from remote to local )
+
+git push
