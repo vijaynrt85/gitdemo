@@ -1,1 +1,84 @@
-hello its demo 
+import { link } from 'node:fs'
+import path from 'node:path'
+import {test,expect} from 'playwright/test'
+
+
+test("samplegetbyrole",async({page})=>{
+
+
+await page.goto("https://www.amazon.com")
+await page.waitForTimeout(5000)
+//await page.getByRole('button', { name: 'Dismiss' }).click();
+await page.getByRole('button', { name: 'Submit' }).first().click();
+//filtering list items where we have link (a is tag and also link for getbyrole) containing Today's text
+//1st approcah using anchor tag
+await page.getByRole('listitem').
+filter({has:page.locator('a',{hasText:/^Today's/})})
+.click()
+//2nd approach using getbyrole
+await page.getByRole('listitem').
+filter({has:page.getByRole('link',{name:"Prime Video",exact:true})})
+    .click()
+await expect(page.locator('span').filter({hasText:/^Traveling/})).toBeVisible()
+//filtering list items where 
+await page.getByRole('link',{name:"Today's Deals"}).click()
+await page.waitForTimeout(5000)
+await page.locator('a').filter({hasText:/Deals$/}).click()
+await page.waitForTimeout(5000)
+await page.pause()
+
+})
+
+test("sdeturl",async({page})=>{
+
+    await page.goto("https://sdetqa.vercel.app/autoplay")
+
+    //fetch first row based on index
+    const firstrow=await page.locator('.card').
+        filter({has: page.locator('h3',{hasText:/Static Web/})})
+        .locator('table tbody tr')
+        .nth(0)
+        .allInnerTexts()
+
+        console.log(firstrow)
+
+     //fetch row elements based on product name
+      const laptoprowvalues=await page.locator('.card').
+               filter({has: page.locator('h3',{hasText:/Static Web/})})
+               .locator('table tbody tr')
+               .filter({has:page.locator('td',{hasText:'Mouse'})})
+               .allInnerTexts()
+
+       console.log(laptoprowvalues)
+
+       //how many rows are having out of stock items
+
+       const outofstockitems= await page.locator('.card')
+       .filter({has:page.locator('h3',{hasText:/Static Web/})})
+       .locator('table tbody tr')
+       .filter({has:page.locator('span',{hasNotText:/In Stock$/})})
+       .count()
+
+       console.log(outofstockitems)
+
+    //fetch out of stock items
+
+    const outofstockitemvalues= await page.locator('.card')
+       .filter({has:page.locator('h3',{hasText:/Static Web/})})
+       .locator('table tbody tr')
+       .filter({has:page.locator('span',{hasNotText:/In Stock$/})})
+       .locator('td')
+       .nth(0)
+       .innerText()
+      console.log(outofstockitemvalues)
+
+
+      const keyboarditem= await page.locator('.card')
+       .filter({has:page.locator('h3',{hasText:/Static Web/})})
+       .locator('table tbody tr')
+       .filter({has:page.locator('span',{hasNotText:/In Stock$/})})
+       .locator('td',{hasText:/Key/})
+       .innerText()
+      console.log(keyboarditem)
+
+})
